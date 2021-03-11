@@ -1,0 +1,51 @@
+<mat-card class="mainBody">
+    <form #f1="ngForm">
+    <table style="width: 60%;">
+        <tr>
+            <td style="width:50%">
+                <mat-form-field style="width: 90%;">
+                    <mat-label>Queen Glados's Birthday Rhyme</mat-label>
+                    <textarea matInput
+                    name="rhyme"
+                    [(ngModel)]='rhyme'
+                    required
+                    placeholder="E.g. Fishes in the water, Fishes in the Sea, We all jump up with a One, two, three!"></textarea>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field style="width: 90%;">
+                    <mat-label>Number of people in the room</mat-label>
+                    <input type="number" required matInput placeholder="5" name="noOfPeople" [(ngModel)]='noOfPeople'>
+                </mat-form-field>
+            </td>
+            <td>
+                <button 
+                [disabled]="!f1.valid"
+                mat-raised-button color="primary" (click)="findPosition()">Find My Position</button>
+            </td>
+        </tr>
+    </table>
+    </form>
+</mat-card>
+
+<mat-card class="mainBody">
+    <p>If you want to win the game, then sit/stand at this position (WINNER POSITION):</p>
+    <div style="overflow: auto;">
+        <div *ngFor="let person of peopleArray;let i = index" class="peopleCard" style="background-color: aqua;">
+            P {{person.initPosition+1}} <br>
+        </div>
+    </div>
+    <hr>
+
+    <div *ngFor="let round of rounds;let i=index">
+        <p>
+            Round {{i+1}}
+        </p>
+        <div style="overflow: auto;">
+            <div [ngClass]="(person.looserInRound==i) ? 'looser' : 'none'" *ngFor="let person of round;let j = index" class="peopleCard">
+                P {{person.initPosition+1}}
+            </div>
+        </div>
+    </div>
+
+</mat-card>

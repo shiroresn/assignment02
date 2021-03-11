@@ -1,0 +1,18 @@
+.mainBody{
+    margin: 20px;
+}
+
+.peopleCard{
+    float: left;
+    width: 60px;
+    height: 30px;
+    border-color: blue;
+    border-width: 1px;
+    border-style: solid;
+    padding: 5px;
+    margin: 5px;
+}
+
+.looser{
+    background-color: lightcoral;
+}
